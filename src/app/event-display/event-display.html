@@ -1,0 +1,20 @@
+<div>
+  <h2>Summer Music Festival</h2>
+  <div>Location: {{ eventVenue }}</div>
+  <div>Date: {{ eventDate | date : "fullDate" }}</div>
+  <div>Price per ticket: {{ ticketPrice }}€</div>
+
+  <h3>Select tickets</h3>
+
+  <div>
+    <button (click)="decreaseTickets()" [disabled]="selectedTickets === 0">
+      -
+    </button>
+    {{ selectedTickets }}
+    <button (click)="increaseTickets()">+</button>
+  </div>
+
+  <button (click)="addToCart()">Add to cart</button>
+
+  <div>Total Price: {{ totalPrice }}€</div>
+</div>
