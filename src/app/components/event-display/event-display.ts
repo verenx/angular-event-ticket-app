@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { CartService } from '../../services/cart/cartService';
 
 @Component({
   selector: 'app-event-display',
@@ -14,6 +15,9 @@ export class EventDisplay {
   ticketPrice = 76;
   selectedTickets = 0;
   totalPrice = 0;
+
+  //dependency injection
+  constructor(private cartService: CartService) {}
 
   increaseTickets() {
     this.selectedTickets++;
@@ -31,9 +35,23 @@ export class EventDisplay {
     this.totalPrice = this.selectedTickets * this.ticketPrice;
   }
 
+  // addToCart() {
+  //   if (this.selectedTickets > 0) {
+  //     alert(`Added ${this.selectedTickets} ticket(s) to cart`);
+  //   }
+  // }
+
   addToCart() {
     if (this.selectedTickets > 0) {
-      alert(`Added ${this.selectedTickets} ticket(s) to cart`);
+      const message = this.cartService.addToCart(
+        this.eventName,
+        this.selectedTickets,
+        this.ticketPrice
+      );
+      alert(message);
+      this.selectedTickets = 0;
+    } else {
+      alert('Bitte wähle mindestens ein Ticket aus');
     }
   }
 }

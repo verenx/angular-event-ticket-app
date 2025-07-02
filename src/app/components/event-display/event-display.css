@@ -1,6 +1,7 @@
 .event-container {
   border: 1px solid lightgrey;
   display: block;
-  margin: 0 450px;
+  margin: 0 650px;
   text-align: center;
+  padding: 30px;
 }

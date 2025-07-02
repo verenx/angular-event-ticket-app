@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { EventDispatcher } from '@angular/core/primitives/event-dispatch';
-import { RouterOutlet } from '@angular/router';
-import { EventDisplay } from './event-display/event-display';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, EventDisplay],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

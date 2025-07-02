@@ -1,0 +1,28 @@
+<h1>🛒 Warenkorb</h1>
+
+<!-- falls Warenkorb leer ist -->
+<div *ngIf="getCartItems().length === 0">
+  <h3>Dein Warenkorb ist leer</h3>
+  <button>Zu den Events</button>
+</div>
+
+<!-- falls items im Warenkorb sind -->
+<div *ngIf="getCartItems().length > 0">
+  <!-- füge jedes ausgewählte Item in den Warenkorb -->
+  <div *ngFor="let item of getCartItems()">
+    <h4>{{ item.eventName }}</h4>
+    <p>Datum {{ item.dateAdded | date : "short" }}</p>
+    <p>Anzahl: {{ item.quantity }} Tickets</p>
+    <p>Preis pro Ticket: {{ item.pricePerTicket }}</p>
+    <p>
+      <strong>Gesamt: {{ item.totalCost }}</strong>
+    </p>
+  </div>
+
+  <!-- Gesamtsumme -->
+  <div>
+    <h2>Gesamtsumme: {{ getTotalPrice() }}€</h2>
+    <button (click)="clearCart()">Warenkorb leeren</button>
+    <button>Zur Kasse</button>
+  </div>
+</div>
